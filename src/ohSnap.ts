@@ -10,76 +10,39 @@ const contents = ts + privateKey + publicKey;
 
 var hash = createHash("md5").update(contents).digest("hex");
 
+let theWholeUrl =
+  "http://gateway.marvel.com/v1/public/characters?ts=" +
+  ts +
+  "&apikey=c59a9bcdefed7f5497e2c760f34d3e51&hash=" +
+  hash +
+  "&limit=100&offset=";
+
 export const apiStuff = () => {
   //for ( offset = 0; offset > 1500; offset + 100) {
-  let offset = 0;
-  let theWholeUrl =
-    "http://gateway.marvel.com/v1/public/characters?ts=" +
-    ts +
-    "&apikey=c59a9bcdefed7f5497e2c760f34d3e51&hash=" +
-    hash +
-    "&limit=100&offset=" +
-    offset;
-  fetch(theWholeUrl).then((response) => {
-    response.json().then(function (data) {
-      //console.log(data.data);
-      //console.log(data.data.results[index].name);
-      for (let index = 0; index <= 100; index++) {
-        //offset = 100;
-        charArray[index] = data.data.results[index].name;
-        //console.log(charArray[index + offset]);
-      }
-    });
-  });
-  //console.log(offset);
-  //console.dir(charArray);
-  /////////////////////this is the next one 100-199
-  offset = 100;
-  theWholeUrl =
-    "http://gateway.marvel.com/v1/public/characters?ts=" +
-    ts +
-    "&apikey=c59a9bcdefed7f5497e2c760f34d3e51&hash=" +
-    hash +
-    "&limit=100&offset=" +
-    offset;
-  fetch(theWholeUrl).then((response) => {
-    response.json().then(function (data) {
-      //console.log(data.data);
-      //console.log(data.data.results[index].name);
-      for (let index = 0; index <= 100; index++) {
-        //offset = 100;
-        charArray[index + 100] = data.data.results[index].name;
-        //console.log(charArray[index + offset]);
-      }
-    });
-  });
-  //console.log(offset);
-  //console.dir(charArray);
-
-  /////////////////////this is the next one 200-299
-  offset = 200;
-  theWholeUrl =
-    "http://gateway.marvel.com/v1/public/characters?ts=" +
-    ts +
-    "&apikey=c59a9bcdefed7f5497e2c760f34d3e51&hash=" +
-    hash +
-    "&limit=100&offset=" +
-    offset;
-  fetch(theWholeUrl).then((response) => {
-    response.json().then(function (data) {
-      //console.log(data.data);
-      //console.log(data.data.results[index].name);
-      for (let index = 0; index <= 100; index++) {
-        //offset = 100;
-        charArray[index + offset] = data.data.results[index].name;
-        //console.log(charArray[index + offset]);
-      }
-    });
-  });
-  console.log(offset);
+  for (let index = 0; index < 15; index++) {
+    pulling();
+    //changeOffset(offset);
+  }
   console.dir(charArray);
 };
 
-//  console.log(charArray[index]);
-//return charArray;
-//};
+function pulling() {
+  let offset = 0;
+  //offset = changeOffset(offset);
+  fetch(theWholeUrl + offset).then((response) => {
+    response.json().then(function (data) {
+      console.log(offset);
+      offset = offset + 100;
+      for (let index = 0; index <= 100; index++) {
+        charArray[index + offset] = data.data.results[index].name;
+        //console.log(index + offset);
+      }
+    });
+  });
+}
+
+// function changeOffset(offset:number): number {
+//   offset=offset+100
+
+//   return offset;
+// }
