@@ -7,15 +7,15 @@ function App() {
   return (
     <>
       <div className="App">
-        <header className="App-header">Snap Generator</header>
+        <header>Snap Generator</header>
 
-        <button className="App-header" onClick={hey}>
+        <button className="button" onClick={hey}>
           SNAP
         </button>
-      </div>
-      <div className="row">
-        <h1 className="column">still here</h1>
-        <h1 className="column">gone</h1>
+        <div className="row">
+          <h1 className="column">still here</h1>
+          <h1 className="column">gone</h1>
+        </div>
       </div>
     </>
   );
