@@ -19,10 +19,10 @@ let theWholeUrl =
 
 export const apiStuff = () => {
   //for ( offset = 0; offset > 1500; offset + 100) {
-  for (let index = 0; index < 15; index++) {
-    pulling();
-    //changeOffset(offset);
-  }
+  //for (let index = 0; index < 2; index++) {
+  pulling();
+  //changeOffset(offset);
+  //}
   console.dir(charArray);
 };
 
@@ -31,11 +31,11 @@ function pulling() {
   //offset = changeOffset(offset);
   fetch(theWholeUrl + offset).then((response) => {
     response.json().then(function (data) {
-      console.log(offset);
-      offset = offset + 100;
-      for (let index = 0; index <= 100; index++) {
+      //console.log(offset);
+      //offset = offset + 100;
+      for (let index = 0; index <= 6; index++) {
         charArray[index + offset] = data.data.results[index].name;
-        //console.log(index + offset);
+        //console.log(charArray);
       }
     });
   });

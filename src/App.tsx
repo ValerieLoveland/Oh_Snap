@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-//import { apiStuff } from "./ohSnap";
+import { apiStuff } from "./ohSnap";
 
 function App() {
-  //apiStuff();
+  apiStuff();
   return (
     <>
       <div className="App">
@@ -22,7 +22,7 @@ function App() {
 }
 
 function hey() {
-  alert("tedious");
+  alert("tedious biz");
 }
 
 export default App;
