@@ -17,13 +17,14 @@ let theWholeUrl =
   hash +
   "&limit=100&offset=";
 
-export const apiStuff = () => {
+export const apiStuff = (): string[] => {
   //for ( offset = 0; offset > 1500; offset + 100) {
   //for (let index = 0; index < 2; index++) {
   pulling();
   //changeOffset(offset);
   //}
   console.dir(charArray);
+  return charArray;
 };
 
 function pulling() {
@@ -33,16 +34,24 @@ function pulling() {
     response.json().then(function (data) {
       //console.log(offset);
       //offset = offset + 100;
-      for (let index = 0; index <= 6; index++) {
-        charArray[index + offset] = data.data.results[index].name;
+      for (let index = 0; index <= 5; index++) {
+        charArray[index + offset] = data.data.results[index];
         //console.log(charArray);
       }
     });
   });
+  return charArray;
 }
 
-// function changeOffset(offset:number): number {
-//   offset=offset+100
-
-//   return offset;
+// function heroList(charArray[]):string[] {
+//   return charArray.map((herodudes) => <li>{herodudes}</li>);
 // }
+
+// const listItems = charArray.map((herodudes) => (
+
+//     <li key={herodudes}>
+//       <{herodudes} />
+//     </li>
+//     return <ul>{heroList}</ul>;
+
+// ));

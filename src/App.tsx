@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import { apiStuff } from "./ohSnap";
 
-function App() {
-  apiStuff();
+export const App: React.FC = (props) => {
+  //apiStuff();
+  //const { heroes } = props;
   return (
     <>
       <div className="App">
@@ -12,6 +13,9 @@ function App() {
         <button className="button" onClick={hey}>
           SNAP
         </button>
+        <div>
+          <ul>{apiStuff()}</ul>
+        </div>
         <div className="row">
           <h1 className="column">still here</h1>
           <h1 className="column">gone</h1>
@@ -19,7 +23,7 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 function hey() {
   alert("tedious biz");
