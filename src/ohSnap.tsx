@@ -1,4 +1,5 @@
 import { createHash } from "crypto";
+import React from "react";
 
 const publicKey = "c59a9bcdefed7f5497e2c760f34d3e51";
 const privateKey = "c26af5028b0ae7c8652944035c8da41712f8e0b3";
@@ -17,14 +18,15 @@ let theWholeUrl =
   hash +
   "&limit=100&offset=";
 
-export const apiStuff = (): string[] => {
+export const apiStuff = (): any => {
   //for ( offset = 0; offset > 1500; offset + 100) {
   //for (let index = 0; index < 2; index++) {
   pulling();
   //changeOffset(offset);
   //}
-  console.dir(charArray);
-  return charArray;
+  //renderHeroes(charArray);
+  console.dir(renderHeroes(charArray));
+  return renderHeroes(charArray);
 };
 
 function pulling() {
@@ -43,15 +45,7 @@ function pulling() {
   return charArray;
 }
 
-// function heroList(charArray[]):string[] {
-//   return charArray.map((herodudes) => <li>{herodudes}</li>);
-// }
-
-// const listItems = charArray.map((herodudes) => (
-
-//     <li key={herodudes}>
-//       <{herodudes} />
-//     </li>
-//     return <ul>{heroList}</ul>;
-
-// ));
+function renderHeroes(charArray: string[]) {
+  const listItems = charArray.map((hero) => <li>{hero}</li>);
+  return <ul>{listItems}</ul>;
+}
