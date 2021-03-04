@@ -25,8 +25,12 @@ export const apiStuff = (): any => {
   //changeOffset(offset);
   //}
   //renderHeroes(charArray);
-  console.dir(renderHeroes(charArray));
-  return renderHeroes(charArray);
+  // console.dir(renderHeroes(charArray));
+  // return renderHeroes(charArray);
+  console.log(charArray);
+  const listItems = charArray.map((hero) => <li>{hero}</li>);
+  //console.log(listItems);
+  return <ul>{listItems}</ul>;
 };
 
 function pulling() {
@@ -38,14 +42,10 @@ function pulling() {
       //offset = offset + 100;
       for (let index = 0; index <= 5; index++) {
         charArray[index + offset] = data.data.results[index];
-        //console.log(charArray);
       }
     });
   });
-  return charArray;
-}
 
-function renderHeroes(charArray: string[]) {
-  const listItems = charArray.map((hero) => <li>{hero}</li>);
-  return <ul>{listItems}</ul>;
+  //console.log(charArray);
+  return charArray;
 }
