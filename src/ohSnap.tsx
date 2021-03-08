@@ -27,10 +27,22 @@ export const apiStuff = (): any => {
   //renderHeroes(charArray);
   // console.dir(renderHeroes(charArray));
   // return renderHeroes(charArray);
-  console.log(charArray);
-  const listItems = charArray.map((hero) => <li>{hero}</li>);
-  //console.log(listItems);
-  return <ul>{listItems}</ul>;
+  //console.log(charArray);
+  // const listItems = charArray.map((hero) => <li>{hero}</li>);
+  // console.log(<ul>{listItems}</ul>);
+  // return <ul>{listItems}</ul>;
+  // const listItems = charArray.map((hero) => (
+  //   <li key={hero.toString()}>{hero}</li>
+  const hero = Object.keys(charArray);
+
+  console.log({ hero });
+  <div>
+    listItems=
+    {Object.keys(charArray).map((key) => (
+      <li>{charArray[key]}</li>
+    ))}
+  </div>;
+  return <ul>listItems</ul>;
 };
 
 function pulling() {
@@ -38,10 +50,14 @@ function pulling() {
   //offset = changeOffset(offset);
   fetch(theWholeUrl + offset).then((response) => {
     response.json().then(function (data) {
-      //console.log(offset);
-      //offset = offset + 100;
+      const name = data.data.results.map((result: any) => {
+        return {
+          name: result.name,
+          //          name: result.name.toString(),
+        };
+      });
       for (let index = 0; index <= 5; index++) {
-        charArray[index + offset] = data.data.results[index];
+        charArray[index + offset] = name[index];
       }
     });
   });
@@ -49,3 +65,12 @@ function pulling() {
   //console.log(charArray);
   return charArray;
 }
+// function map<T, R>(arr: T[], iteratee: (item: T) => R): R[] {
+//   const newArr = [];
+//   for (let index = 0; index < arr.length; index++) {
+//     let result = iteratee(arr[index]);
+//     newArr.push(result);
+//   }
+
+//   return newArr;
+// }
