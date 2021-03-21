@@ -33,16 +33,18 @@ export const apiStuff = (): any => {
   // return <ul>{listItems}</ul>;
   // const listItems = charArray.map((hero) => (
   //   <li key={hero.toString()}>{hero}</li>
-  const hero = Object.keys(charArray);
+  //const hero = Object.keys(charArray);
 
-  console.log({ hero });
-  <div>
-    listItems=
-    {Object.keys(charArray).map((key) => (
-      <li>{charArray[key]}</li>
-    ))}
-  </div>;
-  return <ul>listItems</ul>;
+  console.log({ charArray });
+  return (
+    <div>
+      {Object.keys(charArray).map((hero) => (
+        <p>
+          <li>{hero}</li>
+        </p>
+      ))}
+    </div>
+  );
 };
 
 function pulling() {
