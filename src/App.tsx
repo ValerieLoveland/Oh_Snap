@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { apiStuff } from "./ohSnap";
+import { fetchCharacters } from "./ohSnap";
 
 export const App: React.FC = (props) => {
-  const displayItems = apiStuff();
-  //const { heroes } = props;
+  const [characters, setCharacters] = useState([""]);
+
+  useEffect(() => {
+    fetchCharacters().then((response) => {
+      setCharacters(response);
+    });
+  }, []);
+  console.log(characters);
+
   return (
     <>
       <div className="App">
@@ -13,7 +20,11 @@ export const App: React.FC = (props) => {
         <button className="button" onClick={hey}>
           SNAP
         </button>
-        <div>{displayItems}</div>
+        <ul>
+          {characters.map((bs) => (
+            <li key={bs}>{bs}</li>
+          ))}
+        </ul>
         <div className="row">
           <h1 className="column">still here</h1>
           <h1 className="column">gone</h1>
