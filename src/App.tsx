@@ -3,7 +3,7 @@ import "./App.css";
 import { apiStuff } from "./ohSnap";
 
 export const App: React.FC = (props) => {
-  apiStuff();
+  const displayItems = apiStuff();
   //const { heroes } = props;
   return (
     <>
@@ -13,7 +13,7 @@ export const App: React.FC = (props) => {
         <button className="button" onClick={hey}>
           SNAP
         </button>
-        <div>{apiStuff()}</div>
+        <div>{displayItems}</div>
         <div className="row">
           <h1 className="column">still here</h1>
           <h1 className="column">gone</h1>

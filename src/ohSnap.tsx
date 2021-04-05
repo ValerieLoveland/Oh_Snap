@@ -18,7 +18,7 @@ let theWholeUrl =
   hash +
   "&limit=100&offset=";
 
-export const apiStuff = (): any => {
+export const apiStuff = () => {
   //for ( offset = 0; offset > 1500; offset + 100) {
   //for (let index = 0; index < 2; index++) {
   pulling();
@@ -34,17 +34,23 @@ export const apiStuff = (): any => {
   // const listItems = charArray.map((hero) => (
   //   <li key={hero.toString()}>{hero}</li>
   //const hero = Object.keys(charArray);
+  const testArray = ["bs", "more bs", "b ssss"];
+  console.log(testArray);
+  console.log(charArray);
 
-  console.log({ charArray });
-  return (
-    <div>
-      {Object.keys(charArray).map((hero) => (
-        <p>
-          <li>{hero}</li>
-        </p>
-      ))}
-    </div>
-  );
+  // const listItems = () => (
+  //   <div>
+  //     <ul>
+  //       {testArray.map((hero) => (
+  //         <li>{hero}</li>
+  //       ))}
+  //       {console.log("hi")}
+  //     </ul>
+  //   </div>
+  // );
+  const listItems = testArray.map((bs) => <li key={bs}>{bs}</li>);
+  console.log(listItems);
+  return <ul>{listItems}</ul>;
 };
 
 function pulling() {
@@ -55,11 +61,11 @@ function pulling() {
       const name = data.data.results.map((result: any) => {
         return {
           name: result.name,
-          //          name: result.name.toString(),
+          //name: result.name.toString(),
         };
       });
       for (let index = 0; index <= 5; index++) {
-        charArray[index + offset] = name[index];
+        charArray[index + offset] = name[index].name;
       }
     });
   });
@@ -67,12 +73,12 @@ function pulling() {
   //console.log(charArray);
   return charArray;
 }
-// function map<T, R>(arr: T[], iteratee: (item: T) => R): R[] {
-//   const newArr = [];
-//   for (let index = 0; index < arr.length; index++) {
-//     let result = iteratee(arr[index]);
-//     newArr.push(result);
-//   }
+function map<T, R>(arr: T[], iteratee: (item: T) => R): R[] {
+  const newArr = [];
+  for (let index = 0; index < arr.length; index++) {
+    let result = iteratee(arr[index]);
+    newArr.push(result);
+  }
 
-//   return newArr;
-// }
+  return newArr;
+}
